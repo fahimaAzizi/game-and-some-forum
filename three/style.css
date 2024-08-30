@@ -1,0 +1,58 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
+    gap: 2px;
+    background-color: #333;
+    padding: 10px;
+}
+
+.candy {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.candy:hover {
+    transform: scale(1.1);
+}
+
+.candy.red {
+    background-color: #ff4d4d;
+}
+
+.candy.yellow {
+    background-color: #ffeb3b;
+}
+
+.candy.green {
+    background-color: #4caf50;
+}
+
+.candy.blue {
+    background-color: #2196f3;
+}
+
+.candy.orange {
+    background-color: #ff9800;
+}
+
+.candy.purple {
+    background-color: #9c27b0;
+}
