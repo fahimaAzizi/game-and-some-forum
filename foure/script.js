@@ -1,49 +1,63 @@
-let waterScore = 0;
-let fireScore = 0;
-let roundNumber = 1;
-let turn = "Water";
-const targetScore = 20;
+const gameBoard = document.getElementById('game-board');
+const resetButton = document.getElementById('reset-button');
 
-const waterScoreElement = document.getElementById("water-score");
-const fireScoreElement = document.getElementById("fire-score");
-const messageElement = document.getElementById("message");
-const roundElement = document.getElementById("round");
-const rollBtn = document.getElementById("roll-btn");
+const cards = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H'];
+let flippedCards = [];
+let matchedPairs = 0;
 
-rollBtn.addEventListener("click", () => {
-    const diceRoll = Math.floor(Math.random() * 6) + 1;
-    messageElement.textContent = `${turn} rolled a ${diceRoll}`;
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
 
-    if (turn === "Water") {
-        waterScore += diceRoll;
-        waterScoreElement.textContent = `Water: ${waterScore}`;
-        turn = "Fire";
+function createBoard() {
+    shuffle(cards);
+    gameBoard.innerHTML = '';
+    cards.forEach((card, index) => {
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('card');
+        cardElement.dataset.cardValue = card;
+        cardElement.dataset.index = index;
+        cardElement.addEventListener('click', flipCard);
+        gameBoard.appendChild(cardElement);
+    });
+}
+
+function flipCard() {
+    if (flippedCards.length < 2 && !this.classList.contains('flipped')) {
+        this.classList.add('flipped');
+        this.textContent = this.dataset.cardValue;
+        flippedCards.push(this);
+        if (flippedCards.length === 2) {
+            setTimeout(checkForMatch, 1000);
+        }
+    }
+}
+
+function checkForMatch() {
+    const [card1, card2] = flippedCards;
+    if (card1.dataset.cardValue === card2.dataset.cardValue) {
+        matchedPairs++;
+        if (matchedPairs === cards.length / 2) {
+            setTimeout(() => alert('You win!'), 300);
+        }
     } else {
-        fireScore += diceRoll;
-        fireScoreElement.textContent = `Fire: ${fireScore}`;
-        turn = "Water";
+        card1.classList.remove('flipped');
+        card1.textContent = '';
+        card2.classList.remove('flipped');
+        card2.textContent = '';
     }
-
-    updateRound();
-    checkWinner();
-});
-
-function updateRound() {
-    roundElement.textContent = `Round ${convertNumberToWord(roundNumber)}`;
-    roundNumber++;
+    flippedCards = [];
 }
 
-function checkWinner() {
-    if (waterScore >= targetScore) {
-        messageElement.textContent = "Water wins!";
-        rollBtn.disabled = true;
-    } else if (fireScore >= targetScore) {
-        messageElement.textContent = "Fire wins!";
-        rollBtn.disabled = true;
-    }
+function resetGame() {
+    flippedCards = [];
+    matchedPairs = 0;
+    createBoard();
 }
 
-function convertNumberToWord(number) {
-    const words = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
-    return words[number - 1] || number;
-}
+resetButton.addEventListener('click', resetGame);
+
+createBoard();
