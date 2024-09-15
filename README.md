@@ -4,16 +4,16 @@ This repository contains a collection of my various projects, including games an
 
 ## Games
 
-### 1. **Tik Tak**
+### 1. **Tic-Tac-Toe Game**
 This is a simple Tic-Tac-Toe game. The player competes against either another player or an AI to place their marks in a 3x3 grid, aiming to get three in a row.
 
-### 2. **Quiz**
+### 2. **Quiz game**
 A quiz game where users answer a series of questions to test their knowledge on various subjects. The game keeps track of the player's score and provides feedback after each question.
 
-### 3. **Memory Card**
+### 3. **Memory Card game**
 This is a memory matching game where players are required to match pairs of cards. The game is played on a 3x3 grid, and the cards change places with each new round.
 
-### 4. **Candy**
+### 4. **Candy game**
 A simple puzzle game where players match candies to score points. The objective is to match three or more candies of the same type to clear them from the board.
 
 ## Other Projects
