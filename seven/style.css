@@ -1,0 +1,87 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container for the To-Do List */
+#todo-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Heading */
+h1 {
+    color: #333;
+}
+
+/* Input field styling */
+input {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* Add task button styling */
+button {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* List styling */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Individual task item styling */
+li {
+    background-color: #f9f9f9;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+}
+
+/* Completed task styling */
+li.completed {
+    text-decoration: line-through;
+    background-color: #d4edda;
+}
+
+/* Remove button styling */
+.remove-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: #c82333;
+}
